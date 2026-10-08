@@ -13,11 +13,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Check files
-        run: dir
+      - name: Setup MinGW
+        uses: egor-tensin/setup-mingw@v2
 
-      - name: Build
-        run: g++ main.cpp -o main.exe
+      - name: Build EXE
+        run: g++ main.cpp -o main.exe -static -static-libgcc -static-libstdc++
 
       - name: Upload EXE
         uses: actions/upload-artifact@v4
